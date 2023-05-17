@@ -1,0 +1,40 @@
+﻿@model LivreIndexViewModel
+
+<h2>Books</h2>
+
+<p>Client: @Model.Client.Nom</p>
+
+<form method="get">
+    <div class="form-group">
+        <label for="searchInput">Search:</label>
+        <input type="text" id="searchInput" name="searchString" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Author</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var livre in Model.Livres)
+        {
+            <tr>
+                <td>@livre.Nom</td>
+                <td>@livre.Category</td>
+                <td>@livre.Author.Nom</td>
+                <td>
+                    <a class="btn btn-primary" href="@Url.Action("Edit", "Livre", new { id = livre.Id })">Edit</a>
+                    <a class="btn btn-danger" href="@Url.Action("Delete", "Livre", new { id = livre.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" href="@Url.Action("Create", "Livre")">Add Books</a>

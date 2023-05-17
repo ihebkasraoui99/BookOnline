@@ -1,0 +1,14 @@
+﻿@model Author
+
+<h2>Edit Author</h2>
+
+<form asp-controller="Author" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label for="Nom">Nom</label>
+        <input type="text" class="form-control" id="Nom" name="Nom" asp-for="Nom">
+        <span asp-validation-for="Nom" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,42 @@
+﻿@model ClientViewModel
+
+<style>
+    .register-button {
+        background-color: #4CAF50; /* Green background */
+        border: none; /* Remove border */
+        color: white; /* White text */
+        padding: 12px 24px; /* Add some padding */
+        font-size: 16px; /* Increase font size */
+        cursor: pointer; /* Add a pointer cursor on hover */
+        border-radius: 4px; /* Rounded corners */
+    }
+
+        .register-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+</style>
+
+<h2>Login</h2>
+
+@if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        @Html.ValidationSummary()
+    </div>
+}
+
+<form asp-controller="Client" asp-action="Login" method="post">
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" class="form-control" asp-for="Email">
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" class="form-control" asp-for="Password">
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>
+<br>
+<a href="@Url.Action("Register", "Client")" class="register-button">Sign Up</a>

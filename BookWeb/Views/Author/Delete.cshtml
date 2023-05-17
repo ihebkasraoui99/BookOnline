@@ -1,0 +1,15 @@
+﻿@model Author
+
+<h2>Delete Author</h2>
+
+<div>
+    <h4>Are you sure you want to delete this author?</h4>
+    <h2>@Model.Nom</h2>
+
+    <form asp-controller="Author" asp-action="DeleteConfirmed" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>

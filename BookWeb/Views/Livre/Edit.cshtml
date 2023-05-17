@@ -1,0 +1,32 @@
+﻿@model LivreEditViewModel
+
+<h2>Edit Book</h2>
+
+<form asp-controller="Livre" asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label for="Nom">Name</label>
+        <input type="text" class="form-control" id="Nom" name="Nom" asp-for="Nom">
+        <span asp-validation-for="Nom" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="Category">Category</label>
+        <input type="text" class="form-control" id="Category" name="Category" asp-for="Category">
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="SelectedAuthorId">Author</label>
+        <select class="form-control" id="SelectedAuthorId" name="SelectedAuthorId" asp-for="SelectedAuthorId">
+            @foreach (var author in Model.Authors)
+            {
+                <option value="@author.Id"
+                    selected="@(author.Id == Model.SelectedAuthorId)">
+                    @author.Nom
+                </option>
+            }
+        </select>
+        <span asp-validation-for="SelectedAuthorId" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
