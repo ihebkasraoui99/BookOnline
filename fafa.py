@@ -1,1 +1,1 @@
-print("aafdfafefa")
+print("1")
